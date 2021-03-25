@@ -1,0 +1,53 @@
+:root {
+  --white: #ffffff;
+
+  //utilizou os numero para desmostrar o quao escuro é aquele tom.
+  //Chackra ui nos themes ele tem esse setup de colors.
+
+  --gray-100: #e1e1e6;
+  --gray-300: #a8a8b3;
+  --gray-900: #121214;
+
+  --cyan-500: #61dafd;
+  --yellow-500: #eba417;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--white);
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%; //15px -> 1rem 16px
+  }
+}
+
+@media (max-width: 720) {
+  html {
+    font-size: 87.5%; //14px
+  }
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font: 400 1rem "Roboto", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit; //vai asumir a cor do texto elemento pai.
+  text-decoration: none;
+}
