@@ -1,0 +1,63 @@
+.headerContainer {
+  height: 5rem;
+  border-bottom: 1px solid var(--gray-800);
+}
+.headerContent {
+  max-width: 1120px;
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0 auto; //centraliza o elemento
+  padding: 0 2rem;
+
+  nav {
+    height: 5rem; //vc ta dando 100% da altura para o nav, pra stylizar ele quando ele estiver ativo, fica uma mao na roda.
+    margin-left: 5rem;
+
+    a {
+      display: inline-block;
+      position: relative;
+
+      padding: 0 0.5rem;
+      height: 5rem;
+      line-height: 5rem; //vai deixar o elemento sempre ao centro
+      color: var(--gray-300);
+
+      transition: color 0.2s;
+
+      //Safado -> a msm coisa da outra vez, toda a seguida de ancora tera uma margim left de 2rem
+      & + a {
+        margin-left: 2rem;
+      }
+
+      &:hover {
+        color: var(--white);
+      }
+
+      &.active {
+        color: var(--white);
+        font-weight: bold;
+      }
+
+      &.active::after {
+        content: "";
+        width: 100%;
+        height: 3px;
+
+        position: absolute;
+        bottom: 1px;
+        left: 0;
+
+        border-radius: 3px 3px 0 0;
+        background: var(--yellow-500);
+      }
+    }
+  }
+
+  //Kick no bottao pra direita.
+  > button {
+    margin-left: auto;
+  }
+}

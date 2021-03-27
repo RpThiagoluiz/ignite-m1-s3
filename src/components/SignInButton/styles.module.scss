@@ -1,0 +1,34 @@
+.signInButton {
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 3rem; //colcoar o tamanho do border radius o msm da altura, ele fica lindo 💋
+
+  padding: 0 1.5rem;
+
+  background: var(--gray-800);
+  color: var(--white);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  svg:first-child {
+    margin-right: 1rem;
+  }
+
+  svg.closeIcon {
+    margin-left: 1rem;
+  }
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
