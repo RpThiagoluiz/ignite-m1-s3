@@ -46,10 +46,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   const { slug } = params;
 
   //pelo getServerSideProps
-  if (!session.activeSubscription) {
+  if (!session?.activeSubscription) {
     return {
       redirect: {
-        destination: "/", //trazendo de volta para home
+        destination: `/posts/preview/${slug}`, //trazendo de volta para home
         permanent: false, //se ele assinar ele consegue
       },
     };
