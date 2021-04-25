@@ -1,6 +1,7 @@
 import { query as q } from "faunadb";
 
 import NextAuth from "next-auth";
+
 import Providers from "next-auth/providers";
 import { fauna } from "../../../services/fauna";
 
@@ -16,8 +17,39 @@ export default NextAuth({
   //   signingKey: process.env.SINGING_KEY,
   // },
   callbacks: {
+    async session(session) {
+      try {
+        const userActiveSubscription = await fauna.query(
+          q.Get(
+            q.Intersection([
+              q.Match(
+                q.Index("subscription_by_user_ref"),
+                q.Select(
+                  "ref",
+                  q.Get(
+                    q.Match(
+                      q.Index("user_by_email"),
+                      q.Casefold(session.user.email)
+                    )
+                  )
+                )
+              ),
+              q.Match(q.Index("subscription_by_status"), "active"),
+            ])
+          )
+        );
+        return {
+          ...session,
+          activeSubscription: userActiveSubscription,
+        };
+      } catch (error) {
+        return {
+          ...session,
+          activeSubscription: null,
+        };
+      }
+    },
     async signIn(user, acconunt, profile) {
-      console.log(user); //tem acesso as informacoes do usario logado.
       const { email } = user;
 
       //fauna query language.
