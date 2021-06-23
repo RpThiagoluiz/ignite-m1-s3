@@ -4,9 +4,7 @@ import { api } from "../../services/api";
 import { getStripeJs } from "../../services/stripe-js";
 import styles from "./styles.module.scss";
 
-interface SubscribeButtonProps {
-  priceId: string;
-}
+
 
 //As credenciais secretas que nao podem vir a publico podem ser utilizadas em
 //getServerSideProps(SSR) - so sao utilizados quando a pagina ta rendeziada
@@ -15,7 +13,7 @@ interface SubscribeButtonProps {
 //Criado la na minhas rotas o metodo para cadastras o usuario no stripe, e a requisicao que o stripe pede.
 //subscribe
 
-export function SubscribeButton({ priceId }: SubscribeButtonProps) {
+export function SubscribeButton() {
   const [session] = useSession();
   const router = useRouter();
 
