@@ -56,8 +56,8 @@ describe('SubscribeButton Component', () => {
     render(<SubscribeButton/>)
     const subscribeButton = screen.getByText('Subscribe now')
     fireEvent.click(subscribeButton)
-
-    expect(pushMocked).toHaveBeenCalled()
+//foi chamado na rota posts.
+    expect(pushMocked).toHaveBeenCalledWith('/posts')
     
   })
 })
